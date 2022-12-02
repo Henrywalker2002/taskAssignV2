@@ -70,7 +70,7 @@ def createRoute():
         route = getRouteAndCreateLink(coordinates, routeId, tempLst)
         x = route['features'][0]['properties']['segments'][0]['steps']
         path = []
-        link = 'http://localhost:5000/route/' + str(routeId)
+        link = 'https://serverurbanwatse.herokuapp.com/route/' + str(routeId)
         for y in x:
             path.append('distance: '+ str(y['distance']) + ', instruction: ' + str(y['instruction']))
         d = {"result":"ok", "message": {"path" : path, "link":link, "routeId": routeId}}
