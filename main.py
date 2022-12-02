@@ -325,10 +325,10 @@ def refill():
             cursor.close()
             conn.close()
     
-@app.route('/login')
+@app.route('/login', methods = ['GET', "POST"])
 def login():
     try:
-        json_ = request.json()
+        json_ = request.json
         if (json_['username'] == "admin" and json_['password'] == "admin"):
             return jsonify({"result":"ok", "message":"success"})
         return jsonify({"result":"fail", "message":"wrong username or password"})
