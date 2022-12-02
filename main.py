@@ -325,6 +325,16 @@ def refill():
             cursor.close()
             conn.close()
     
+@app.route('/login')
+def login():
+    try:
+        json_ = request.json()
+        if (json_['username'] == "admin" and json_['password'] == "admin"):
+            return jsonify({"result":"ok", "message":"success"})
+        return jsonify({"result":"fail", "message":"wrong username or password"})
+    except Exception as e:
+        return e
+
 if __name__ == '__main__':
     app.run()
 
