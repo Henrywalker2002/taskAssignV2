@@ -36,6 +36,10 @@ def getRouteAndCreateLink(coordinates, routeId, lstName):
     map_directions.save(name)
     return route
 
+@app.route('/')
+def index():
+    return "success"
+
 #display map
 @app.route('/route/<route>')
 def getIndex(route):
