@@ -61,6 +61,9 @@ def createRoute():
             routeId = temp[0]['max(id)'] + 1
         coordinates = []
         tempLst = []
+        if len(MCPs) < 5 or len(MCPs) > 10:
+            d = {"result":"fail", "message":"num of MCPs must in [5-10]"}
+            return jsonify(d)
         for x in MCPs:
             cursor.execute('select * from mcp where id = %s', x)
             temp = cursor.fetchall()
@@ -190,6 +193,9 @@ def addTask():
         temp = listRoute[routeId]
         s = '\n'.join(temp[0])
         rc = cursor.execute('insert into route (id, path, map) values (%s, %s, %s)', (routeId, s, temp[1]))
+        if len(employee) < 3 or len(employee) > 5:
+            d = {"result":"fail", "message":"num of employee must in [3-5]"}
+            return jsonify(d)
         for x in employee:
             query = 'insert into task (licensePlate, employeeId, routeId, `date`) values (%s, %s, %s, %s)'
             bindData = (license_plate, x, routeId, datetime.date.today())
