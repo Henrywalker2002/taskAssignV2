@@ -62,8 +62,8 @@ def createRoute():
         coordinates = []
         tempLst = []
         if len(MCPs) < 5 or len(MCPs) > 10:
-            d = {"result":"fail", "message":"num of MCPs must in [5-10]"}
-            return jsonify(d)
+             d = {"result":"fail", "message":"num of MCPs must in [5-10]"}
+             return jsonify(d)
         for x in MCPs:
             cursor.execute('select * from mcp where id = %s', x)
             temp = cursor.fetchall()
@@ -165,7 +165,7 @@ def getListTask():
     try:
         conn = mysql.connect()
         cursor = conn.cursor(pymysql.cursors.DictCursor)
-        rc = cursor.execute('select * from task where date = %s', datetime.date.today())
+        rc = cursor.execute('select licensePlate, name, map, routeId from task join (employee,route) on (task.employeeId = employee.id and task.routeId = route.id) where date = %s', datetime.date.today())
         if rc == 0:
             d = {"result":"fail", "message":"no task to view"}
             return jsonify(d)
