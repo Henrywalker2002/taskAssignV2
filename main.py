@@ -169,7 +169,21 @@ def getListTask():
         if rc == 0:
             d = {"result":"fail", "message":"no task to view"}
             return jsonify(d)
-        d = {"result":"ok", "message": cursor.fetchall()}
+        res = cursor.fetchall()
+        cur = res[0]
+        lst = []
+        allEmp = ''
+        for x in res:
+            if x['licensePlate'] != cur['licensePlate']:
+                d = {'licensePlate': cur['licensePlate'], "Employees": allEmp[:-2], "routeId" : cur['routeId'], "map": cur['map']}
+                lst.append(d)
+                allEmp = x['name'] + ', '
+                cur = x
+            else:
+                allEmp += x['name'] + ', '
+        d = {'licensePlate': cur['licensePlate'], "Employees": allEmp[:-2], "routeId" : cur['routeId'], "map": cur['map']}
+        lst.append(d)
+        d = {"result":"ok", "message": lst}
         return jsonify(d)
     except Exception as e:
         return e
