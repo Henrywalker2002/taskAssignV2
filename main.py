@@ -244,14 +244,22 @@ def getTask():
             d = {"result":"fail", "message":"no task found"}
             return jsonify(d)
         employee = cursor.fetchall()
+        employeeName = ""
+        for x in employee:
+            employeeName += x['name'] + ', '
         rc = cursor.execute('select id, address from mcp where routeId = %s', routeId)
         mcps = cursor.fetchall()
+        mcpstr = ''
+        for x in mcps:
+            mcpstr += x['address'] + '\n'
         rc = cursor.execute('select * from route where id = %s', routeId)
         route = cursor.fetchall()
         licensePlate = employee[0]['licensePlate']
         for x in employee:
             x.pop('licensePlate')
-        message = {"employee":employee, "MCPs": mcps, "route": route[0], "licensePlate": licensePlate}
+        path = route[0]['path']
+        mp = route[0]['map']
+        message = {"employee": employeeName[:-2], "MCPs": mcpstr, "route": path, "licensePlate": licensePlate, "map": mp}
         d = {"result":"ok", "message":message}
         return jsonify(d)
     except Exception as e:
