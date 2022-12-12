@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from './Register';
 import Login from './Login';
 import { BodyDemo } from "./component/Body/body";
-import NavBar from "./component/Navbar/NavBar"
+import { Detail } from "./component/Body/detailTask";
+import NavBar from "./component/Navbar/NavBar";
 
 function App() {
 
@@ -11,9 +11,9 @@ function App() {
       <NavBar/>
       <BrowserRouter>
         <Routes> 
+          <Route path ="/detail" exact element = {<Detail/>}/>
           <Route path ="/" exact element = {<BodyDemo/>}/>
           <Route path ="/Login" exact element = {<Login/>}/>
-          <Route path ="/Register" exact element = {<Register/>}/>
         </Routes>
       </BrowserRouter>
      </main>
@@ -21,4 +21,3 @@ function App() {
 }
 
 export default App;
-
