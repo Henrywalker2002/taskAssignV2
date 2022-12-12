@@ -249,15 +249,16 @@ def getTask():
             employeeName += x['name'] + ', '
         rc = cursor.execute('select id, address from mcp where routeId = %s', routeId)
         mcps = cursor.fetchall()
-        mcpstr = ''
+        mcpstr = []
         for x in mcps:
-            mcpstr += x['address'] + '\n'
+            mcpstr.append(x['address'])
         rc = cursor.execute('select * from route where id = %s', routeId)
         route = cursor.fetchall()
         licensePlate = employee[0]['licensePlate']
         for x in employee:
             x.pop('licensePlate')
         path = route[0]['path']
+        path = path.split('\n')
         mp = route[0]['map']
         message = {"employee": employeeName[:-2], "MCPs": mcpstr, "route": path, "licensePlate": licensePlate, "map": mp}
         d = {"result":"ok", "message":message}
