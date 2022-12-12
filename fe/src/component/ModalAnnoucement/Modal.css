@@ -1,0 +1,17 @@
+.footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .footer Button {
+  
+    background-color: #2C4E29;
+    border-radius: 8px;
+    font-size: 10px;
+    text-align: justify;
+    color: white;
+  }
+  
