@@ -8,6 +8,7 @@ import "../../App.css";
 import { TableDemo } from "../Table/table";
 import { PopUpData, PopUpMcp, PopUpTruck } from "../PopUp/popup";
 import axios from "axios";
+import api from "../../api/axios";
 
 export const BodyDemo = () => {
     const [showModal, setShowModal] = useState(false);
@@ -146,7 +147,7 @@ export const BodyDemo = () => {
     const handleDelete = (key) => {
         const newData = datafetchTask.filter((item) => item.key !== key);
         setDatafetchTask(newData);
-        deletePost(key);
+        deletePost(3);
         // call api delete here
       };
 
@@ -154,7 +155,8 @@ export const BodyDemo = () => {
     // useEffect(() => {
         // DELETE request using fetch with async/await
         async function deletePost (id) {
-            await fetch('https://serverurbanwatse.herokuapp.com/task${id}', { method: 'DELETE' });
+            await fetch(`https://serverurbanwatse.herokuapp.com/task${id}`, { method: 'DELETE' });
+            // let draft = api.delete(`https://serverurbanwatse.herokuapp.com/task${id}`)
         }
 
         // deletePost(1);
@@ -334,7 +336,7 @@ export const BodyDemo = () => {
                         <ButtonStyled type="text" onClick={() => openModal()}>
                             ADD
                         </ButtonStyled>
-                        <ButtonStyled onClick={() => openModalAnm()} type="text">DELETE</ButtonStyled>
+                        {/* <ButtonStyled onClick={() => openModalAnm()} type="text">DELETE</ButtonStyled> */}
                     </div>
                 </div>
             </div>

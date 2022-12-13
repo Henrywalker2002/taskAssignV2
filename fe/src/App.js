@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, a } from "react-router-dom";
-import Login from './Login';
+import Login from './component/Login/login';
 import { BodyDemo } from "./component/Body/body";
 import {Detail} from "./component/Body/detailTask";
 import NavBar from "./component/Navbar/NavBar";
+import { Login1 } from "./component/Login/login1";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path ="/Login" exact element = {<Login/>}/>
         </Routes>
       </BrowserRouter>
+      {/* <Login1/> */}
      </main>
   );
 }

@@ -5,7 +5,6 @@ import { MdClose } from "react-icons/md";
 import "./Modal.css";
 import { Button, Input } from "antd";
 import { ButtonStyled } from "../Button/buttons";
-import { Passsword} from "./Password"
 
 const Background = styled.div`
   width: 100%;

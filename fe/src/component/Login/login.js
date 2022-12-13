@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from "./context/AuthProvider";
-import axios from './api/axios';
-import  './index.css';
+import AuthContext from "../../context/AuthProvider";
+import style from './login.module.css';
 
+import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
@@ -69,7 +69,7 @@ const Login = () => {
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Sign In</h1>
+                    <h1>Log In</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">Username:</label>
                         <input
@@ -90,7 +90,7 @@ const Login = () => {
                             value={pwd}
                             required
                         />
-                        <button>Sign In</button>
+                        <button>Log In</button>
                     </form>
                 </section>
             )}

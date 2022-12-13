@@ -116,14 +116,7 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
                             </ModalContent>
                             <div className="flex">
                                 <div className="w-4/5"></div>
-                                <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">ADD</Button>
-                                </div>
-                                <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">CANCLE</Button>
-                                </div>
                             </div>
-
 
                             <CloseModalButton
                                 aria-label="Close modal"
@@ -199,12 +192,6 @@ export const PopUpMcp = ({ isShowPopUp, setShowPopUp, title, data }) => {
                             </ModalContent>
                             <div className="flex">
                                 <div className="w-4/5"></div>
-                                <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">ADD</Button>
-                                </div>
-                                <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">CANCLE</Button>
-                                </div>
                             </div>
 
 
@@ -283,12 +270,6 @@ export const PopUpTruck = ({ isShowPopUp, setShowPopUp, title, data }) => {
                             </ModalContent>
                             <div className="flex">
                                 <div className="w-4/5"></div>
-                                <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">ADD</Button>
-                                </div>
-                                <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">CANCLE</Button>
-                                </div>
                             </div>
 
 
