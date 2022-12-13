@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Table, Button, Tag, Space } from "antd";
+import { Table, Button, Tag, Space, Popconfirm } from "antd";
 import { ButtonStyled } from "../Button/buttons";
 import Modal from "../Modal/Modal";
 import ModalAnm from "../ModalAnnoucement/ModalAnm";
@@ -7,7 +7,7 @@ import "./body.css";
 import "../../App.css";
 import { TableDemo } from "../Table/table";
 import { PopUpData, PopUpMcp, PopUpTruck } from "../PopUp/popup";
-// import axios from "axios";
+import axios from "axios";
 
 export const BodyDemo = () => {
     const [showModal, setShowModal] = useState(false);
@@ -23,6 +23,7 @@ export const BodyDemo = () => {
     const [datafetchMcp, setDatafetchMcp] = useState([]);
     const [datafetchTruck, setDatafetchTruck] = useState([]);
     const [datafetchTask, setDatafetchTask] = useState([]);
+    // const [datafetchDetail, setDatafetchDetail] = useState([]);
 
     // const [data, setData] = useState(null);
     // const [loading, setLoading] = useState(true);
@@ -36,43 +37,51 @@ export const BodyDemo = () => {
     const openModalAnm = () => {
         setShowModalAnm((prev) => !prev)
     }
-    // const openModalData = () => {
-    //     setShowPopUpData((prev) => !prev)
-    // }
 
-    // const dataSource = [
-    //     {
-    //         // key: "1",
-    //         title: "dsfMike",
-    //         no: "23",
-    //         MCPs: [
-    //             "Đường Hương Lộ 80B & Đường Đông Thạnh 4, Hồ Chí Minh, Hồ Chí Minh, 71708",
-    //             "Hẻm 621 Hưng Phú & Đường Nguyễn Duy, Hồ Chí Minh, Hồ Chí Minh, 73007",
-    //             "Đường Lê Văn Lương & Lê Văn Lương, Hồ Chí Minh, Hồ Chí Minh, 73207",
-    //             "Đường Phan Văn Đáng & Đường Tỉnh Lộ 769, Nhơn Trạch, Đồng Nai, 76260",
-    //             "Đường Nguyễn Tư Giản 157, Hồ Chí Minh, Hồ Chí Minh, 71420",
-    //             "Hẻm 745/150 Quang Trung 745/150/33, Hồ Chí Minh, Hồ Chí Minh, 71420",
-    //             "Đường CC5 13, Hồ Chí Minh, Hồ Chí Minh, 72010",
-    //             "Hẻm 32 Đường Số 10 32/17, Hồ Chí Minh, Hồ Chí Minh, 71108",
-    //             "Đường Dương Cát Lợi 67, Hồ Chí Minh, Hồ Chí Minh, 73206"
-    //         ],        
-    //     },
-    //     {
-    //         // key: "2",
-    //         title: "Johfdsfn",
-    //         no: "2",
-    //         mcp: "10 Downing Street",
-    //     },
-    //     {
-    //         // key: "3",
-    //         title: "Mifsdfke",
-    //         no: "3",
-    //         mcp: "10 Downing Street",
-    //     },
-    // ];
+        const MCPs= ["Đường Hương Lộ 80B & Đường Đông Thạnh 4, Hồ Chí Minh, Hồ Chí Minh, 71708",
+        "Hẻm 621 Hưng Phú & Đường Nguyễn Duy, Hồ Chí Minh, Hồ Chí Minh, 73007",
+        "Đường Lê Văn Lương & Lê Văn Lương, Hồ Chí Minh, Hồ Chí Minh, 73207",
+        "Đường Phan Văn Đáng & Đường Tỉnh Lộ 769, Nhơn Trạch, Đồng Nai, 76260",
+        "Đường Nguyễn Tư Giản 157, Hồ Chí Minh, Hồ Chí Minh, 71420",
+        "Hẻm 745/150 Quang Trung 745/150/33, Hồ Chí Minh, Hồ Chí Minh, 71420",
+        "Đường CC5 13, Hồ Chí Minh, Hồ Chí Minh, 72010",
+        "Hẻm 32 Đường Số 10 32/17, Hồ Chí Minh, Hồ Chí Minh, 71108",
+        "Đường Dương Cát Lợi 67, Hồ Chí Minh, Hồ Chí Minh, 73206"];
+    
+        const  [dataSource, setDataSource] = useState([
+            {
+                key: 1,
+                name: 'John Brown',
+                age: 32,
+                address: 'New York No. 1 Lake Park',
+                description: 'My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park.',
+              },
+              {
+                key: 2,
+                name: 'Jim Green',
+                age: 42,
+                address: 'London No. 1 Lake Park',
+                description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.',
+              },
+              {
+                key: 3,
+                name: 'Not Expandable',
+                age: 29,
+                address: 'Jiangsu No. 1 Lake Park',
+                description: 'This not expandable',
+              },
+              {
+                key: 4,
+                name: 'Joe Black',
+                age: 32,
+                address: 'Sidney No. 1 Lake Park',
+                description: 'My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park.',
+              },
+          ]);
 
 
-
+// ====================================
+          // list Employee
     useEffect(() => {
         const dataSource2 = async () => {
         const data = await (
@@ -87,6 +96,9 @@ export const BodyDemo = () => {
         // console.log(datafetch);
     }, []);
 
+
+    // ====================================
+        // list MCP
     useEffect(() => {
         const dataSource3 = async () => {
           const data = await (
@@ -98,9 +110,11 @@ export const BodyDemo = () => {
           console.log(data.message);
         };
         dataSource3();
-        // console.log(datafetchMcp);
     }, []);
 
+
+    // ====================================
+        // list  Truck
     useEffect(() => {
         const dataSource4 = async () => {
           const data = await (
@@ -112,10 +126,11 @@ export const BodyDemo = () => {
           console.log(data.message);
         };
         dataSource4();
-        // console.log(datafetchMcp);
     }, []);
         
+
     // ==========================================
+        // list Task
     useEffect(() => {
         const dataSource5 = async () => {
             const data = await (
@@ -127,8 +142,55 @@ export const BodyDemo = () => {
         };
         dataSource5();
     }, []);
-    // ==========================================
 
+    const handleDelete = (key) => {
+        const newData = datafetchTask.filter((item) => item.key !== key);
+        setDatafetchTask(newData);
+        deletePost(key);
+        // call api delete here
+      };
+
+    // const [hehe, changehehe] = useState([]);
+    // useEffect(() => {
+        // DELETE request using fetch with async/await
+        async function deletePost (id) {
+            await fetch('https://serverurbanwatse.herokuapp.com/task${id}', { method: 'DELETE' });
+        }
+
+        // deletePost(1);
+    // }, []);
+
+
+    // const deleteHandler = async () => {
+    //     await axios.delete('https://serverurbanwatse.herokuapp.com/task/${2}', { data: { routeId: 3 } });
+    // };
+    // deleteHandler;
+
+    // ==========================================
+        //task detail
+    // async function detail() {
+    //     var body = document.getElementById('table')
+    //     var divContainter = document.createElement('div')
+    //     divContainter.className = "containner"
+    //     // 
+    //     var myHeaders = new Headers();
+    //     myHeaders.append("Content-Type", "application/json");
+    //     var raw = JSON.stringify({
+    //     "routeId": 1
+    //     });
+    //     var requestOptions = {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    //     redirect: 'follow'
+    //     };
+    //     var response = await fetch("https://serverurbanwatse.herokuapp.com/detailTask", requestOptions)
+    //     var data = await response.json();
+    //     console.log(data.message);
+    //     setDatafetchDetail(data.message);
+    // }
+
+    // detail();
 
     const columns = [
         {
@@ -182,6 +244,22 @@ export const BodyDemo = () => {
             key: "map",
             align: 'center',
         },
+        {
+            title: "RouteId",
+            dataIndex: "routeId",
+            key: "routeId",
+            align: 'center',
+        },
+        {
+            title: 'operation',
+            dataIndex: 'operation',
+            render: (_, record) =>
+              dataSource.length >= 1 ? (
+                <Popconfirm title="Are you sure to delete?" onConfirm={() => handleDelete(record.key)}>
+                  <Button > Delete </Button>
+                </Popconfirm>
+              ) : null,
+        },
     ];
 
     // const handleOnClickDetail = () => { }
@@ -229,6 +307,18 @@ export const BodyDemo = () => {
                     <div className="w-1/5"></div>
                     <TableDemo
                         dataSource={datafetchTask} // +++++++++++ data +++++++++ 
+                        expandable={{
+                            expandedRowRender: (record) => (
+                              <p
+                                style={{
+                                  margin: 0,
+                                }}
+                              >
+                                {record.description}
+                              </p>
+                            ),
+                            rowExpandable: (record) => record.name !== 'Not Expandable',
+                          }}
                         columns={columns}
 
                         className="w-3/5 mt-10"
