@@ -51,3 +51,26 @@ async function detail() {
 }
 
 detail()
+
+$('#delete').click(async function() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+    "routeId": parseInt(localStorage.getItem('routeId'))
+    });
+
+    var requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+    };
+
+    var response = await fetch("https://serverurbanwatse.herokuapp.com/task", requestOptions)
+    json_ = await response.json()
+    if (json_['result']) {
+        window.alert("success")
+        window.location.href = "index.html"
+    }
+})
