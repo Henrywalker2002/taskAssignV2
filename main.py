@@ -220,7 +220,7 @@ def addTask():
             rc = cursor.execute('update employee set status = 1 where id = %s', x)
         rc = cursor.execute('update truck set status = 1 where licensePlate = %s', license_plate)
         for x in temp[2]:
-            rc = cursor.execute('update mcp set status = 0, routeId = %s where id = %s', (routeId, x))
+            rc = cursor.execute('update mcp set status = 1, routeId = %s where id = %s', (routeId, x))
         conn.commit()
         listRoute.pop(routeId)
         d = {"result":"ok", "message":"success"}
