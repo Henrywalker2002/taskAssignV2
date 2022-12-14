@@ -141,9 +141,7 @@ async function truck() {
         var arr = json_['message']
         arr.forEach(x => {
             var tr = document.createElement('tr')
-            tr.id = 'emp'+x['id']
-            var td1 = document.createElement('td')
-            td1.textContent = x['id']
+            tr.className = 'row'
             var td2 = document.createElement('td')
             td2.textContent = x['licensePlate']
             var td3 = document.createElement('td')
@@ -152,7 +150,6 @@ async function truck() {
             boxCheck.type = "checkbox"
             boxCheck.id = 'truck' + x['licensePlate']
             td3.appendChild(boxCheck)
-            tr.appendChild(td1)
             tr.appendChild(td2)
             tr.appendChild(td3)
             body.appendChild(tr)
