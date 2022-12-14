@@ -2,3 +2,22 @@
     z-index: 2;
     position: relative;
 }
+.table-responsive{
+    margin: 20px;
+    background-color: rgb(215, 224, 215);
+}
+.table{
+    margin-bottom: 0px;
+    border-color: rgb(109, 108, 108);
+}
+.btn{
+    margin-right: 50px;
+}
+th{
+    border-color: rgb(109, 108, 108);
+}
+tr{
+    text-align: center;
+    margin-top: 5px;
+    border-color: rgb(109, 108, 108);
+}
