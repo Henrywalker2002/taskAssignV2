@@ -89,6 +89,7 @@ $('#edit').click (async function() {
     $('#btn1').hide()
     $('#btn2').show()
     $('#detailTask').hide()
+    $('#editForm').show()
     var body = document.getElementById('empBody')
     curId.forEach(x => {
         var tr = document.createElement('tr')
@@ -210,6 +211,7 @@ $('#next').click (async function() {
 $('#btn2').hide()
 $('#btn3').hide()
 $('#editTruck').hide()
+$('#editForm').hide()
 
 $('#confirm').click(async function() {
     //
@@ -263,9 +265,19 @@ $('#confirm').click(async function() {
         var json2 = await response.json()
         if (json2['result'] == "ok") {
             window.alert("success")
+            window.location.href = "index.html"
         }
         //
     }
 })
 
+$('#back').click(function() {
+    $('#btn3').hide()
+    $('#btn2').show()
+    $('#editTruck').hide()
+    $('#editForm').show()
+} )
 
+$('.exit').click( function(){
+    window.location.reload()
+})
