@@ -1,5 +1,5 @@
 var gJson
-
+lstEmp = []
 async function detail() {
     routeId = parseInt(localStorage.getItem('routeId'))
     var body = document.getElementById('detailTask')
@@ -144,6 +144,128 @@ $('#edit').click (async function() {
 
 })
 
-$('next').click (async function() {
-    
+$('#next').click (async function() {
+    //
+    var listSelEmp = document.querySelectorAll('.empCheck:checked')
+    if (listSelEmp.length < 3 | listSelEmp.length > 5) {
+        window.alert("number of emp must in 3-5")
+    }
+    else {
+        listSelEmp.forEach(emp => {
+            lstEmp.push(parseInt(emp.id.slice(3)))
+        })
+        console.log(lstEmp)
+    }
+    //
+
+    var body = document.getElementById('truckBody')
+    var tr = document.createElement('tr')
+    var td2 = document.createElement('td')
+    td2.textContent = gJson['message']['licensePlate']
+    var td3 = document.createElement('td')
+    var boxCheck = document.createElement('input')
+    boxCheck.className = "truckCheck"
+    boxCheck.type = "checkbox"
+    boxCheck.id = 'truck' + gJson['message']['licensePlate']
+    boxCheck.checked = true
+    td3.appendChild(boxCheck)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    body.appendChild(tr)
+
+    //
+    $('#btn2').hide()
+    $('#btn3').show()
+    $('#editForm').hide()
+    //
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+      
+    var response = await fetch("https://serverurbanwatse.herokuapp.com/listTruckFree", requestOptions)
+    var json_ = await response.json()
+    if (json_['result'] == "ok") {
+        var body = document.getElementById('truckBody')
+        var arr = json_['message']
+        arr.forEach(x => {
+            var tr = document.createElement('tr')
+            var td2 = document.createElement('td')
+            td2.textContent = x['licensePlate']
+            var td3 = document.createElement('td')
+            var boxCheck = document.createElement('input')
+            boxCheck.className = "truckCheck"
+            boxCheck.type = "checkbox"
+            boxCheck.id = 'truck' + x['licensePlate']
+            td3.appendChild(boxCheck)
+            tr.appendChild(td2)
+            tr.appendChild(td3)
+            body.appendChild(tr)
+        })
+    }
+    // 
+    $('#editTruck').show()
 })
+
+$('#btn2').hide()
+$('#btn3').hide()
+$('#editTruck').hide()
+
+$('#confirm').click(async function() {
+    //
+    var lisencePlate = ''
+    var listSelTruck = document.querySelectorAll('.truckCheck:checked')
+    if (listSelTruck.length != 1) {
+        window.alert("please choose only one truck")
+    }
+    else {
+        listSelTruck.forEach(mcps => {
+            lisencePlate = mcps.id.slice(5)
+        })
+        console.log(lisencePlate)
+    }
+    //
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+    "routeId": parseInt(localStorage.getItem('routeId'))
+    });
+
+    var requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+    };
+
+    var response = await fetch("https://serverurbanwatse.herokuapp.com/task", requestOptions)
+    json_ = await response.json()
+    if (json_['result'] == "ok") {
+        //
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+    
+        var raw = JSON.stringify({
+        "employeeId": lstEmp,
+        "licensePlate": lisencePlate,
+        "routeId": parseInt(localStorage.getItem('routeId'))
+        });
+    
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+    
+        var response = await fetch("https://serverurbanwatse.herokuapp.com/task", requestOptions)
+        var json2 = await response.json()
+        if (json2['result'] == "ok") {
+            window.alert("success")
+        }
+        //
+    }
+})
+
+
