@@ -51,26 +51,33 @@ export const Mcp = () => {
           ).json();
           (data.message).map((item, index) => item.key = index);
           setDatafetchMcp(data.message);
-          console.log(data.message);
         };
         dataSource3();
     }, []);
 
-
+    let id = new Array();
+    id = [5,6,21,22,25];
     async function createRoute (id) {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         var raw = JSON.stringify({"MCPs": id});
         var requestOptions = {
-        method: ['GET', 'POST'],
+        method: 'POST',
         headers: myHeaders,
         body: raw,
         };
-
+        var response = await fetch("https://serverurbanwatse.herokuapp.com/createRoute", requestOptions)
+        var data = await response.json();
+        // console.log(data.message)
+        var text = data.message
+        var route = text.routeId
+        return route
     }
-
-
-
+    
+    async function getRouteId(id) {
+    const result = await createRoute(id);
+    }
+    getRouteId(id);
 
     const columns = [
         {
@@ -99,9 +106,9 @@ export const Mcp = () => {
             align: 'center',
         },
         {
-            title: "TaskId",
-            dataIndex: "routeId",
-            key: "routeId",
+            title: "ID",
+            dataIndex: "id",
+            key: "id",
             align: 'center',
         },
         // {

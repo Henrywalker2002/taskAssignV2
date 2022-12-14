@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import {Link } from "react-router-dom";
 import { Table, Button, Tag, Space, Popconfirm } from "antd";
 import { ButtonStyled } from "../Button/buttons";
 import Modal from "../Modal/Modal";
@@ -348,9 +349,12 @@ export const BodyDemo = () => {
                     <div className="w-4/5 "> </div>
                     <div className="w-1/5 mb-10">
                         {/* <ButtonStyled type="text" onClick={() => openModal()}> */}
-                        <ButtonStyled type="text" onClick={() => setShowPopUpMcp((prev) => !prev)}>
-                            ADD
-                        </ButtonStyled>
+                        <Link to="/mcp">
+                            <ButtonStyled type="text">
+                                ADD
+                            </ButtonStyled>
+                        </Link>
+
                     </div>
                 </div>
             </div>

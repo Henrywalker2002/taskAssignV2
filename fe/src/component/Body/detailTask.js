@@ -9,7 +9,7 @@ import "../../App.css";
 
 //  const Taskdetail = () => {
     export async function Detail() {
-        var body = document.getElementById('table')
+        var body = document.getElementsByTagName('table')[0]
         var divContainter = document.createElement('div')
         divContainter.className = "containner"
         // 

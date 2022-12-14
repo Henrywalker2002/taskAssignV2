@@ -56,18 +56,23 @@ export const Staff = () => {
             // console.log(datafetch);
         }, []);
 
-
-    async function createRoute (id) {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        var raw = JSON.stringify({"routeId": id});
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        };
-
-    }
+        
+        async function assignTask (id, tid, rid) {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            var raw = JSON.stringify({"employeeId": id}, {"licensePlate": tid}, {"routeId": rid});
+            var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            };
+            var response = await fetch("https://serverurbanwatse.herokuapp.com/task", requestOptions)
+            var data = await response.json();
+            // console.log(data.message)
+            var text = data.message
+            var route = text.routeId
+            return route
+        }
 
 
 
