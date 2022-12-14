@@ -3,7 +3,6 @@ import { Table, Button, Tag, Space, Popconfirm } from "antd";
 import { ButtonStyled } from "../Button/buttons";
 import Modal from "../Modal/Modal";
 import ModalAnm from "../ModalAnnoucement/ModalAnm";
-// import "./body.css";
 import "../../App.css";
 import { TableDemo } from "../Table/table";
 import { PopUpData, PopUpMcp, PopUpTruck } from "../PopUp/popup";
@@ -145,22 +144,37 @@ export const BodyDemo = () => {
     }, []);
 
     const handleDelete = (key) => {
-        const newData = datafetchTask.filter((item) => item.key !== key);
+        const newData = datafetchTask.filter((item) => item.routeId !== key);
         setDatafetchTask(newData);
-        deletePost(4);
+        deletePost(key);
         // call api delete here
       };
 
-    // const [hehe, changehehe] = useState([]);
-    // useEffect(() => {
-        // DELETE request using fetch with async/await
-        async function deletePost (id) {
-            await fetch(`${id}https://serverurbanwatse.herokuapp.com/task`, { method: 'DELETE' });
-            // let draft = api.delete(`https://serverurbanwatse.herokuapp.com/task${id}`)
-        }
+    async function deletePost (id) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({"routeId": id});
+        var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: raw,
+        };
+        await fetch("https://serverurbanwatse.herokuapp.com/task", requestOptions)
+    }
 
-        // deletePost(1);
-    // }, []);
+    async function createRoute (id) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({"routeId": id});
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        };
+
+    }
+
+
 
 
     // const deleteHandler = async () => {
@@ -256,8 +270,8 @@ export const BodyDemo = () => {
             title: 'operation',
             dataIndex: 'operation',
             render: (_, record) =>
-              dataSource.length >= 1 ? (
-                <Popconfirm title="Are you sure to delete?" onConfirm={() => handleDelete(record.key)}>
+              datafetchTask.length >= 1 ? (
+                <Popconfirm title="Are you sure to delete?" onConfirm={() => handleDelete(record.routeId)}>
                   <Button > Delete </Button>
                 </Popconfirm>
               ) : null,
@@ -300,9 +314,9 @@ export const BodyDemo = () => {
                 announcement='Are you sure to delete this?'
             />
             {/* <PopUpData isShowPopUp={showPopUpData} setShowPopUp={setShowPopUpData} data={dataSource.map(data => data)} title={"Colector & Janitor"}/> */}
-            <PopUpData isShowPopUp={showPopUpData} setShowPopUp={setShowPopUpData} data={datafetch} title={"Colector & Janitor"}/>
-            <PopUpMcp isShowPopUp={showPopUpMcp} setShowPopUp={setShowPopUpMcp} data={datafetchMcp.map(data => data)} title={"MCPs"}/>
-            <PopUpTruck isShowPopUp={showPopUpTrucks} setShowPopUp={setShowPopUpTrucks} data={datafetchTruck.map(data => data)} title={"Trucks"}/>
+            <PopUpData isShowPopUp={showPopUpData} setShowPopUp={setShowPopUpData} data={datafetch} title={"Choose Colector & Janitor"}/>
+            <PopUpMcp isShowPopUp={showPopUpMcp} setShowPopUp={setShowPopUpMcp} data={datafetchMcp.map(data => data)} title={"Choose MCPs"}/>
+            <PopUpTruck isShowPopUp={showPopUpTrucks} setShowPopUp={setShowPopUpTrucks} data={datafetchTruck.map(data => data)} title={"Choose Trucks"}/>
             
             <div className="bodyDiv">
                 <div className="flex">
@@ -333,10 +347,10 @@ export const BodyDemo = () => {
                     {" "}
                     <div className="w-4/5 "> </div>
                     <div className="w-1/5 mb-10">
-                        <ButtonStyled type="text" onClick={() => openModal()}>
+                        {/* <ButtonStyled type="text" onClick={() => openModal()}> */}
+                        <ButtonStyled type="text" onClick={() => setShowPopUpMcp((prev) => !prev)}>
                             ADD
                         </ButtonStyled>
-                        {/* <ButtonStyled onClick={() => openModalAnm()} type="text">DELETE</ButtonStyled> */}
                     </div>
                 </div>
             </div>
