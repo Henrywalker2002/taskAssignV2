@@ -1,3 +1,10 @@
+.bodyDiv{
+  background-color:   #CADFC0;
+}
+
+html {
+  background-color: #CADFC0;
+}
 .App {
     text-align: center;
   }
@@ -28,6 +35,47 @@
     color: #61dafb;
   }
   
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  button,
+  textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: black;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: white;
+  }
+  
+  label {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: montserrat, sans-serif;
+    color: black;
+  }
+
+  form {
+    display: block;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+    background-color: #CADFC0;
+}
+  /* form::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: 1;
+  } */
+
 
   @keyframes App-logo-spin {
     from {

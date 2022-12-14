@@ -3,7 +3,7 @@ import { Table, Button, Tag, Space, Popconfirm } from "antd";
 import { ButtonStyled } from "../Button/buttons";
 import Modal from "../Modal/Modal";
 import ModalAnm from "../ModalAnnoucement/ModalAnm";
-import "./body.css";
+// import "./body.css";
 import "../../App.css";
 import { TableDemo } from "../Table/table";
 import { PopUpData, PopUpMcp, PopUpTruck } from "../PopUp/popup";
@@ -147,7 +147,7 @@ export const BodyDemo = () => {
     const handleDelete = (key) => {
         const newData = datafetchTask.filter((item) => item.key !== key);
         setDatafetchTask(newData);
-        deletePost(3);
+        deletePost(4);
         // call api delete here
       };
 
@@ -155,7 +155,7 @@ export const BodyDemo = () => {
     // useEffect(() => {
         // DELETE request using fetch with async/await
         async function deletePost (id) {
-            await fetch(`https://serverurbanwatse.herokuapp.com/task${id}`, { method: 'DELETE' });
+            await fetch(`${id}https://serverurbanwatse.herokuapp.com/task`, { method: 'DELETE' });
             // let draft = api.delete(`https://serverurbanwatse.herokuapp.com/task${id}`)
         }
 
