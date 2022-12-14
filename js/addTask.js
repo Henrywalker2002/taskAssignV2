@@ -141,7 +141,6 @@ async function truck() {
         var arr = json_['message']
         arr.forEach(x => {
             var tr = document.createElement('tr')
-            tr.className = 'row'
             var td2 = document.createElement('td')
             td2.textContent = x['licensePlate']
             var td3 = document.createElement('td')
