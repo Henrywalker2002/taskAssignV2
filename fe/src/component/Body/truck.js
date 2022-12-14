@@ -187,6 +187,11 @@ export const Truck = () => {
                                 ADD
                             </ButtonStyled>
                         </Link>
+                        <Link to="/staff">
+                        <ButtonStyled type="text">
+                                RETURN
+                            </ButtonStyled>
+                        </Link>
 
                     </div>
                 </div>

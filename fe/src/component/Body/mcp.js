@@ -76,6 +76,7 @@ export const Mcp = () => {
     
     async function getRouteId(id) {
     const result = await createRoute(id);
+    console.log(result)
     }
     getRouteId(id);
 
@@ -192,6 +193,11 @@ export const Mcp = () => {
                         <Link to="/staff">
                             <ButtonStyled type="text">
                                 ADD
+                            </ButtonStyled>
+                        </Link>
+                        <Link to="/">
+                        <ButtonStyled type="text">
+                                RETURN
                             </ButtonStyled>
                         </Link>
                     </div>

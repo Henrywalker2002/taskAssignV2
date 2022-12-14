@@ -56,7 +56,10 @@ export const Staff = () => {
             // console.log(datafetch);
         }, []);
 
-        
+        let id = new Array();
+        id = [17,27,7];
+        var tid = ('59A18969');
+        var rid = ('9')
         async function assignTask (id, tid, rid) {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
@@ -68,12 +71,13 @@ export const Staff = () => {
             };
             var response = await fetch("https://serverurbanwatse.herokuapp.com/task", requestOptions)
             var data = await response.json();
-            // console.log(data.message)
+            console.log(data.message)
             var text = data.message
             var route = text.routeId
             return route
         }
-
+        
+        assignTask(id, tid, rid);
 
 
 
@@ -190,6 +194,11 @@ export const Staff = () => {
                         <Link to="/truck">
                             <ButtonStyled type="text">
                                 ADD
+                            </ButtonStyled>
+                        </Link>
+                        <Link to="/mcp">
+                        <ButtonStyled type="text">
+                                RETURN
                             </ButtonStyled>
                         </Link>
                     </div>
