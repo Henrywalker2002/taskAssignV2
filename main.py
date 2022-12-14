@@ -219,6 +219,8 @@ def addTask():
                 return jsonify(d)
             rc = cursor.execute('update employee set status = 1 where id = %s', x)
         rc = cursor.execute('update truck set status = 1 where licensePlate = %s', license_plate)
+        for x in listRoute[routeId][2]:
+            cursor.execute('update mcp set status = 1 where id = %s', x)
         for x in temp[2]:
             rc = cursor.execute('update mcp set status = 1, routeId = %s where id = %s', (routeId, x))
         conn.commit()
