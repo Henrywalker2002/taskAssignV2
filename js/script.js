@@ -40,3 +40,7 @@ async function appendTask() {
 }
 
 appendTask()
+
+$('#addTask').click(function() {
+    window.location.href = "addTask.html"
+})

@@ -206,13 +206,17 @@ async function handleConfirm(json_) {
         row.appendChild(col2)
         confirmTab.appendChild(row)
     }
+    var temp = document.createElement('div')
+    temp.style.textAlign = "right"
     btnConfirm = document.createElement('button')
     btnConfirm.type = "submit"
     btnConfirm.onclick = function() {
         addTask()
     }
+    btnConfirm.className = 'btn btn-success'
     btnConfirm.textContent = "confirm"
-    confirmTab.appendChild(btnConfirm)
+    temp.appendChild(btnConfirm)
+    confirmTab.appendChild(temp)
 }
 
 async function addTask() {
