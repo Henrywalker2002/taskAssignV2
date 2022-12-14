@@ -224,7 +224,6 @@ def addTask():
         for x in temp[2]:
             rc = cursor.execute('update mcp set status = 1, routeId = %s where id = %s', (routeId, x))
         conn.commit()
-        listRoute.pop(routeId)
         d = {"result":"ok", "message":"success"}
         return jsonify(d)
     except Exception as e:
