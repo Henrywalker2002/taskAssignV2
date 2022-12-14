@@ -14,9 +14,30 @@
         <div id = "detailTask">
 
         </div>
-        <button id ="edit" type="submit">Edit</button>
-        <button id = "delete" type="submit">Delete</button>
-        <button class = "cancel" type="submit">Cancel</button>
+        <div id = "editForm">
+            <div class="table-responsive" style="max-height: 600px; ">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody id = "empBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id ="btn1">
+            <button id ="edit" type="submit">Edit</button>
+            <button id = "delete" type="submit">Delete</button>
+            <button class = "cancel" type="submit">Cancel</button>
+        </div> 
+        <div id ="btn2">
+            <button type="submit" id ="confirm">Confirm</button>
+            <button type="submit" id = "exit">Cancel</button>
+        </div>
         <script src="js/detailTask.js"></script>
     </body>
 </html>

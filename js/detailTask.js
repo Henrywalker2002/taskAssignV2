@@ -1,3 +1,5 @@
+var json_
+
 async function detail() {
     routeId = parseInt(localStorage.getItem('routeId'))
     var body = document.getElementById('detailTask')
@@ -40,6 +42,9 @@ async function detail() {
                 col2.appendChild(tempDiv)
             }
         }
+        else if (x == "lstId") {
+
+        }
         else {
             col2.textContent = json_['message'][x]
         }
@@ -77,4 +82,30 @@ $('#delete').click(async function() {
 
 $('.cancel').click(function () {
     window.location.href = "index.html"
+})
+
+$('#edit').click (async function() {
+    var curId = json_['message']['lstId']
+    $('#btn1').hide()
+    $('#btn2').show()
+    $('#detailTask').hide()
+    var body = document.getElementById('editForm')
+    curId.forEach(x => {
+        var tr = document.createElement('tr')
+        tr.id = 'emp'+x['id']
+        var td1 = document.createElement('td')
+        td1.textContent = x['id']
+        var td2 = document.createElement('td')
+        td2.textContent = x['name']
+        var td3 = document.createElement('td')
+        var boxCheck = document.createElement('input')
+        boxCheck.className = "empCheck"
+        boxCheck.type = "checkbox"
+        boxCheck.id = 'emp' + x['id']
+        td3.appendChild(boxCheck)
+        tr.appendChild(td1)
+        tr.appendChild(td2)
+        tr.appendChild(td3)
+        body.appendChild(tr)
+    })
 })
