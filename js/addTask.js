@@ -51,6 +51,9 @@ async function mcps () {
         }
         )
     }
+    else {
+        window.alert(json_['message'])
+    }
 }
 
 $('#addMcps').click(async function () {
@@ -87,6 +90,9 @@ $('#addMcps').click(async function () {
             mcpsTab.style.display = "none"
             handleConfirm(json_)
         }
+        else {
+            window.alert(json_['message'])
+        }
 
         // end api
     }
@@ -121,6 +127,9 @@ async function emp() {
             tr.appendChild(td3)
             body.appendChild(tr)
         })
+    }
+    else {
+        window.alert(json_['message'])
     }
 }
 
@@ -166,6 +175,9 @@ async function truck() {
             tr.appendChild(td3)
             body.appendChild(tr)
         })
+    }
+    else {
+        window.alert(json_['message'])
     }
 }
 
@@ -300,6 +312,9 @@ async function addTask() {
     if (json_['result'] == "ok") {
         window.alert("success")
         window.location.href = "index.html"
+    }
+    else {
+        window.alert(json_['message'])
     }
 }
 
