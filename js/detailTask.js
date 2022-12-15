@@ -285,6 +285,10 @@ $('#confirm').click(async function() {
             window.alert("success")
             window.location.href = "index.html"
         }
+        else {
+            window.alert("something went wrong, please try again")
+            window.location.href = "index.html"
+        }
         //
     }
 })

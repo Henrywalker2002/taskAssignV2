@@ -213,7 +213,7 @@ async function handleConfirm(json_) {
     col6.className = 'col-10'
     var s = ""
     for (let x in arrEmpId) {
-        s += x + ', '
+        s += x + arrEmpId[x].toString() + ', '
     }
     col6.textContent = s.slice(0,-2)
     row2.appendChild(col5)
@@ -299,6 +299,7 @@ async function addTask() {
     var json_ = await response.json()
     if (json_['result'] == "ok") {
         window.alert("success")
+        window.location.href = "index.html"
     }
 }
 
