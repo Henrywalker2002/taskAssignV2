@@ -188,6 +188,38 @@ $('#addTruck').click(function () {
 
 async function handleConfirm(json_) {
     var confirmTab = document.getElementById('confirmTab')
+
+    // add license plate
+    var row1 = document.createElement('div')
+    row1.className = 'row table-responsive'
+    row1.style.maxHeight = '500px' 
+    var col3 = document.createElement('div')
+    col3.className = 'col'
+    col3.textContent = "License Plate"
+    var col4 = document.createElement('div')
+    col4.className = 'col-10'
+    col4.textContent = lisencePlate
+    row1.appendChild(col3)
+    row1.appendChild(col4)
+    confirmTab.append(row1)
+    // add emps
+    var row2 = document.createElement('div')
+    row2.className = 'row table-responsive'
+    row2.style.maxHeight = '390px' 
+    var col5 = document.createElement('div')
+    col5.className = 'col'
+    col5.textContent = "EmpId"
+    var col6 = document.createElement('div')
+    col6.className = 'col-10'
+    var s = ""
+    for (let x in arrEmpId) {
+        s += x + ', '
+    }
+    col6.textContent = s.slice(0,-2)
+    row2.appendChild(col5)
+    row2.appendChild(col6)
+    confirmTab.append(row2)
+
     for (let x in json_['message']){ 
         var row = document.createElement('div')
         row.className = 'row table-responsive'
@@ -220,6 +252,9 @@ async function handleConfirm(json_) {
         row.appendChild(col2)
         confirmTab.appendChild(row)
     }
+
+
+
     var temp = document.createElement('div')
     temp.style.textAlign = "right"
     var btnConfirm = document.createElement('button')

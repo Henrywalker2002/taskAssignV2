@@ -23,6 +23,7 @@ tr{
 
 .table-responsive{
     max-height: 650px;
+    margin-bottom: 20px;
 }
 .col{
   background-color: rgb(173, 175, 173);
@@ -40,6 +41,11 @@ tr{
 h2{
   text-align: center;
 }
+
+#emp, #truck, #mcp, #confirmtab {
+  margin-top: 15px;
+}
+
 /* login page */
 #login-page {
     width: 360px;
