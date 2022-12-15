@@ -190,7 +190,8 @@ async function handleConfirm(json_) {
     var confirmTab = document.getElementById('confirmTab')
     for (let x in json_['message']){ 
         var row = document.createElement('div')
-        row.className = 'row' 
+        row.className = 'row table-responsive'
+        row.style.maxHeight = '500px' 
         // 
         var col1 = document.createElement('div')
         col1.className = 'col'
@@ -209,7 +210,7 @@ async function handleConfirm(json_) {
             var a = document.createElement('a')
             a.href = json_['message'][x]
             a.target = "_blank"
-            a.textContent = "link to map"
+            a.textContent = json_['message'][x]
             col2.appendChild(a)
         }
         else {
