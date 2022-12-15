@@ -288,3 +288,11 @@ $('#back').click(function() {
 $('.exit').click( function(){
     window.location.reload()
 })
+
+$('#logout').click(function() {
+    window.localStorage.removeItem('username')
+})
+
+if (window.localStorage.getItem('username') == null) {
+    window.location.href = "login.html"
+}

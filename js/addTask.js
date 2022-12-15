@@ -267,3 +267,11 @@ async function addTask() {
 }
 
 emp()
+
+$('#logout').click(function() {
+    window.localStorage.removeItem('username')
+})
+
+if (window.localStorage.getItem('username') == null) {
+    window.location.href = "login.html"
+}

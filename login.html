@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./css/style.css">
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div id="login-page">
             <div class="form">
               <form id="login-form">
                 <div class="input-login">
-                  <input type="text" placeholder="TÊN ĐĂNG NHẬP"/>
+                  <input id = "username" type="text" placeholder="TÊN ĐĂNG NHẬP"/>
                   <i class="user-icon ti-user"></i>
                 </div>
                 <div class="pass-login">
-                  <input type="password" placeholder="MẬT KHẨU"/>
+                  <input id = "password" type="password" placeholder="MẬT KHẨU"/>
                   <i class="key-icon ti-key"></i>
                 </div>
                 <div id = "notify"></div>
-                <button class="btn-login">ĐĂNG NHẬP</button>
-                
-                <button class="btn-create">Tạo tài khoản mới </button>
+                <button id = "btn-log" class="btn-login" type="button">ĐĂNG NHẬP</button>
+              
               </form>
             </div>
     </div>
+    <script src="js/login.js"></script>
 </body>
 </html>
