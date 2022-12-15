@@ -1,5 +1,6 @@
 var gJson
 lstEmp = []
+document.title = 'route ' + localStorage.getItem('routeId')
 async function detail() {
     routeId = parseInt(localStorage.getItem('routeId'))
     var body = document.getElementById('detailTask')
@@ -32,7 +33,8 @@ async function detail() {
             continue
         }
         var row = document.createElement('div')
-        row.className = 'row'
+        row.className = 'row table-responsive'
+        row.style.maxHeight = "350px"
         var col1 = document.createElement('div')
         col1.className = 'col'
         col1.textContent = x.toUpperCase()
@@ -46,7 +48,16 @@ async function detail() {
             }
         }
         else {
-            col2.textContent = gJson['message'][x]
+            if (x == 'map') {
+                var a = document.createElement('a')
+                a.href = gJson['message'][x]
+                a.target = "_blank"
+                a.textContent = gJson['message'][x]
+                col2.appendChild(a)
+            }
+            else{
+                col2.textContent = gJson['message'][x]
+            }
         }
         row.appendChild(col1)
         row.appendChild(col2)
