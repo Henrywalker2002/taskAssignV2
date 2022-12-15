@@ -3,7 +3,6 @@
     position: relative;
 }
 .table-responsive{
-    margin: 20px;
     background-color: rgb(215, 224, 215);
 }
 .table{
@@ -24,6 +23,27 @@ tr{
 
 .table-responsive{
     max-height: 650px;
+    margin-bottom: 20px;
+}
+.col{
+  background-color: rgb(173, 175, 173);
+}
+.col-10{
+  background-color: rgb(215, 224, 215);
+}
+.row{
+  border: 1px solid #686767;
+}
+#detailTask{
+  
+  margin: 10px 50px 10px 50px;
+}
+h2{
+  text-align: center;
+}
+
+#emp, #truck, #mcp, #confirmtab {
+  margin-top: 15px;
 }
 
 /* login page */
