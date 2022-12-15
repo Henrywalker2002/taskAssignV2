@@ -6,6 +6,19 @@ var lisencePlate = ""
 
 $('#mcp').hide()
 $('#truck').hide()
+$('#backEmp').click(function() {
+    window.location.href = "index.html"
+})
+
+$('#backTruck').click(function() {
+    $('#truck').hide()
+    $('#emp').show()
+})
+
+$('#backMcp').click(function() {
+    $('#mcp').hide()
+    $('#truck').show()
+})
 
 async function mcps () {
     var tableBody = document.getElementById('mcpsBody')
@@ -208,14 +221,24 @@ async function handleConfirm(json_) {
     }
     var temp = document.createElement('div')
     temp.style.textAlign = "right"
-    btnConfirm = document.createElement('button')
+    var btnConfirm = document.createElement('button')
     btnConfirm.type = "submit"
     btnConfirm.onclick = function() {
         addTask()
     }
     btnConfirm.className = 'btn btn-success'
     btnConfirm.textContent = "confirm"
+    // btn cancel
+    var btnCancel = document.createElement('button')
+    btnCancel.type = 'submit'
+    btnCancel.onclick = function () {
+        window.location.reload()
+    }
+    btnCancel.className = "btn btn-success"
+    btnCancel.textContent = "Cancel"
+    temp.appendChild(btnCancel)
     temp.appendChild(btnConfirm)
+    //
     confirmTab.appendChild(temp)
 }
 

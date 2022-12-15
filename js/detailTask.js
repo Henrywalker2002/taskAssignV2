@@ -28,6 +28,9 @@ async function detail() {
     h2.textContent = 'Route ' + routeId.toString()
     body.appendChild(h2)
     for (let x in gJson['message']) {
+        if (x == 'lstId') {
+            continue
+        }
         var row = document.createElement('div')
         row.className = 'row'
         var col1 = document.createElement('div')
@@ -41,9 +44,6 @@ async function detail() {
                 tempDiv.textContent = gJson['message'][x][y]
                 col2.appendChild(tempDiv)
             }
-        }
-        else if (x == "lstId") {
-
         }
         else {
             col2.textContent = gJson['message'][x]
