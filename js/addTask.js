@@ -225,7 +225,7 @@ async function handleConfirm(json_) {
     col6.className = 'col-10'
     var s = ""
     for (let x in arrEmpId) {
-        s += x + arrEmpId[x].toString() + ', '
+        s += arrEmpId[x].toString() + ', '
     }
     col6.textContent = s.slice(0,-2)
     row2.appendChild(col5)
