@@ -8,6 +8,9 @@ admin
 front-end code at brand front_end (use html, css, javascript, bootstrap, jquery) \
 back-end code at brand back_end (use flask of Python)
 
+# How to use
+Can be viewed on report or link youtube: https://youtu.be/SAlR5rslTwQ?t=944
+
 # Diagram
 ## whole system
 ![wholeSystem](https://user-images.githubusercontent.com/46373762/208368279-feef6327-4346-4319-a193-6d009cca61bc.png)
